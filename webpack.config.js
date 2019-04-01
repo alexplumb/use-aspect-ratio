@@ -39,7 +39,7 @@ var config = {
         test: /\.tsx?$/,
         exclude: [/\/node_modules\//],
         use: [
-          'ts-loader',
+          'awesome-typescript-loader',
           'source-map-loader',
         ]
       },

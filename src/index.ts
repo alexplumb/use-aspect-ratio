@@ -25,18 +25,20 @@ export function useWindowSize(callback?: Function): WindowSize {
   let [windowSize, setWindowSize] = useState(getWindowSize());
 
   const resize = () => {
-    const size = getWindowSize();
+    window.requestAnimationFrame(() => {
+      const size = getWindowSize();
 
-    callback(size);
-    setWindowSize(size);
+      callback(size);
+      setWindowSize(size);
+    });
   };
 
   useEffect(
     () => {
       callback(windowSize);
 
-      window.addEventListener('resize', resize);
-      return () => window.removeEventListener('resize', resize);
+      window.addEventListener('resize', resize, false);
+      return () => window.removeEventListener('resize', resize, false);
     },
     [],
   );
