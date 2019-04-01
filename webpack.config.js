@@ -20,6 +20,7 @@ const plugins = [
 ];
 
 var config = {
+  mode: 'production',
   devtool: isProd ? 'hidden-source-map' : 'source-map',
   context: path.resolve('./src'),
   entry: {
@@ -27,7 +28,9 @@ var config = {
   },
   output: {
     path: path.resolve('./dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    library: 'UseAspectRatio',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -36,16 +39,7 @@ var config = {
         test: /\.tsx?$/,
         exclude: [/\/node_modules\//],
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-react',
-                '@babel/preset-typescript',
-              ],
-            },
-          },
+          'ts-loader',
           'source-map-loader',
         ]
       },
