@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 type WindowSize = {
   readonly innerHeight: number;
@@ -46,8 +46,8 @@ export function useWindowSize(callback?: Function): WindowSize {
   return windowSize;
 }
 
-export function useAspectRatio(ratio: number): RefObject<HTMLElement> {
-  const ref = useRef<HTMLElement>(null);
+export function useAspectRatio(ratio: number) {
+  const ref = useRef(null);
 
   const [mediaWidth, setMediaWidth] = useState(600);
   useWindowSize(() => ref.current && setMediaWidth(ref.current.clientWidth));
