@@ -76,9 +76,9 @@
     "start": "npm run server:dev",
     "test": "karma start"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }
