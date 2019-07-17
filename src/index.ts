@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useRef } from 'react';
 
 type WindowSize = {
   readonly innerHeight: number;
@@ -33,7 +33,7 @@ export function useWindowSize(callback?: Function): WindowSize {
     });
   };
 
-  useEffect(
+  useLayoutEffect(
     () => {
       callback(windowSize);
 
@@ -52,7 +52,7 @@ export function useAspectRatio(ratio: number) {
   const [mediaWidth, setMediaWidth] = useState(600);
   useWindowSize(() => ref.current && setMediaWidth(ref.current.clientWidth));
 
-  useEffect(
+  useLayoutEffect(
     () => {
       if (ref.current) {
         ref.current.style.height = `${Math.round(mediaWidth / ratio)}px`;
